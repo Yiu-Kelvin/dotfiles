@@ -75,6 +75,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	zsh-vi-mode
+	ohmyzsh-full-autoupdate
 )
 
 source $ZSH/oh-my-zsh.sh
