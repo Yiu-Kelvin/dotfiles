@@ -106,6 +106,59 @@ fi
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias ohmyzsh="mate ~/.oh-my-zsh" 
+
+export VENV_HOME="$HOME/.virtualenvs"
+[[ -d $VENV_HOME ]] || mkdir $VENV_HOME
+
+lsvenv() {
+  ls -1 $VENV_HOME
+}
+
+venv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      source "$VENV_HOME/$1/bin/activate"
+  fi
+}
+
+mkvenv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      python3 -m venv $VENV_HOME/$1
+  fi
+}
+
+rmvenv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      rm -r $VENV_HOME/$1
+  fi
+}
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 eval "$(starship init zsh)"
+
+alias wakepc="wakeonlan fc:34:97:9f:8f:12"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+alias y="yazi"
+
+alias tm="tmux"
+
+alias plz='sudo $(history -p !!)'
+alias untar='tar xf '
+alias ipe='curl ipinfo.io/ip'
+alias cat="batcat"
 
